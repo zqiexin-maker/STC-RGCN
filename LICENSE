@@ -19,7 +19,3 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
-
-Adapted third-party code retains its upstream license and copyright:
-- baselines/gmel.py   — consolidated and adapted from GMEL (https://github.com/jackmiemie/GMEL)
-- baselines/sigcn.py  — re-implemented in PyTorch from SI-GCN (https://github.com/susurrant/flow-imputation)

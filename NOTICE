@@ -1,0 +1,23 @@
+STC-RGCN
+Copyright (c) 2026 Xingyu Zhuo
+
+This product is released under the MIT License; see LICENSE.
+
+Two baselines derive from third-party work and remain subject to their upstream
+licenses and copyright:
+
+  stc_rgcn/baselines/gmel.py
+      A single-file consolidation of the open-source GMEL implementation
+      (https://github.com/jackmiemie/GMEL), from Liu et al., AAAI 2020,
+      "Learning Geo-Contextual Embeddings for Commuting Flow Prediction".
+      The data pipeline was replaced with project adapters and the GBRT
+      fine-tuning stage was removed.
+
+  stc_rgcn/baselines/sigcn.py
+      A PyTorch re-implementation of SI-GCN, from Yao et al., 2020, "Spatial
+      Origin-Destination Flow Imputation Using Graph Convolutional Neural
+      Networks". The upstream reference code
+      (https://github.com/susurrant/flow-imputation) is TensorFlow 1.x.
+
+The gravity, radiation and tree-ensemble baselines, and everything else in this
+repository, were written for this project.

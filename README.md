@@ -423,5 +423,5 @@ Conventions worth keeping to:
 
 ## License
 
-Released under the [MIT License](LICENSE). Vendored baseline code (GMEL, SI-GCN)
-remains subject to its upstream licenses.
+Released under the [MIT License](LICENSE). Two baselines derive from third-party
+work and remain subject to their upstream licenses — see [NOTICE](NOTICE).
