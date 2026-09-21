@@ -1,0 +1,97 @@
+[build-system]
+requires = ["setuptools>=64", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "stc-rgcn"
+version = "1.0.0"
+description = "Spatio-Temporal Constrained Relational Graph Convolutional Network for OD flow and trip-purpose prediction"
+readme = "README.md"
+license = { file = "LICENSE" }
+requires-python = ">=3.9"
+authors = [{ name = "Xingyu Zhuo" }]
+keywords = [
+    "graph-neural-network",
+    "origin-destination",
+    "urban-computing",
+    "trip-purpose",
+    "multi-task-learning",
+]
+classifiers = [
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Science/Research",
+    "License :: OSI Approved :: MIT License",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Topic :: Scientific/Engineering :: Artificial Intelligence",
+]
+dependencies = [
+    "numpy>=1.23",
+    "pandas>=1.5",
+    "scipy>=1.9",
+    "torch>=2.0",
+    "torch-geometric>=2.3",
+    "tqdm>=4.64",
+]
+
+[project.optional-dependencies]
+# Stages 1-5 of the feature pipeline.
+preprocessing = [
+    "gensim>=4.2",
+    "geopandas>=0.12",
+    "scikit-learn>=1.1",
+]
+# Comparison baselines. dgl is GMEL-only and has its own install matrix:
+# see https://www.dgl.ai/pages/start.html
+baselines = [
+    "scikit-learn>=1.1",
+    "xgboost>=1.7",
+    "lightgbm>=3.3",
+]
+dev = [
+    "ruff>=0.4",
+]
+
+[project.urls]
+Homepage = "https://github.com/zqiexin-maker/STC-RGCN"
+Issues = "https://github.com/zqiexin-maker/STC-RGCN/issues"
+
+[project.scripts]
+stc-rgcn-train = "stc_rgcn.run:main"
+stc-rgcn-eval = "stc_rgcn.evaluation.cli:main"
+stc-rgcn-poi-embedding = "stc_rgcn.preprocessing.poi_embedding:main"
+stc-rgcn-build-dataset = "stc_rgcn.preprocessing.dataset_builder:main"
+stc-rgcn-synthesize = "stc_rgcn.preprocessing.trajectory_synthesis:main"
+stc-rgcn-traj-embedding = "stc_rgcn.preprocessing.trajectory_embedding:main"
+stc-rgcn-fuse-features = "stc_rgcn.preprocessing.feature_fusion:main"
+stc-rgcn-baseline-physics = "stc_rgcn.baselines.physics:main"
+stc-rgcn-baseline-trees = "stc_rgcn.baselines.tree_ensembles:main"
+stc-rgcn-baseline-sigcn = "stc_rgcn.baselines.sigcn:main"
+stc-rgcn-baseline-gmel = "stc_rgcn.baselines.gmel:main"
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["stc_rgcn*"]
+
+[tool.ruff]
+line-length = 100
+src = ["."]
+
+[tool.ruff.lint]
+select = ["E", "F", "W", "I", "UP", "B"]
+ignore = [
+    "E731",   # lambdas are used deliberately for picklable constraint predicates
+    "B905",   # zip(strict=) is not available on the minimum supported Python
+    "UP032",  # str.format() is used consistently; f-strings are not required
+    "UP006",  # typing.Dict/List kept for the 3.9 floor
+    "UP045",  # typing.Optional kept for the 3.9 floor
+]
+
+[tool.ruff.lint.per-file-ignores]
+# Vendored upstream code keeps its original structure and naming.
+"stc_rgcn/baselines/gmel.py" = ["E501", "B006", "B007", "B904", "F841", "UP035", "UP008"]
+"stc_rgcn/baselines/sigcn.py" = ["B904"]
+"stc_rgcn/baselines/common/*.py" = ["B904"]

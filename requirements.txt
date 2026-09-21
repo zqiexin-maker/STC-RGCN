@@ -1,0 +1,10 @@
+# Dependencies are declared in pyproject.toml; this file just installs them.
+#
+#   pip install torch --index-url https://download.pytorch.org/whl/cpu
+#   pip install -r requirements.txt
+#
+# For the optional extras, install the package directly instead:
+#   pip install -e ".[preprocessing]"   gensim, geopandas, scikit-learn
+#   pip install -e ".[baselines]"       xgboost, lightgbm, scikit-learn
+#   pip install -e ".[dev]"             pytest, ruff
+-e .

@@ -1,0 +1,5 @@
+method,max_distance,time_window
+subway,70,6-23
+bus,70,5-23
+driving,80,0-24
+non-vehicle,20,0-24

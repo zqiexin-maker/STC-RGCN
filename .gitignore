@@ -1,0 +1,33 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+build/
+dist/
+.venv/
+venv/
+
+# Test / lint caches
+.pytest_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Run outputs (stc-rgcn-train writes runs/<run-name>/)
+runs/
+*.pt
+*.pth
+
+# Preprocessing intermediates
+data/interim/
+
+# Reports / scratch
+*.log
+*.csv.bak
+
+# IDE / tooling
+.idea/
+.vscode/
+.claude/
+.workbuddy/
+.DS_Store
